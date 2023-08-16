@@ -19,7 +19,6 @@ void connectToWiFi() {
   while (WiFi.status() != WL_CONNECTED) {
     Serial.print(".");
     delay(500);
-    // we can even make the ESP32 to sleep
   }
  
   Serial.print("Connected. IP: ");
@@ -44,14 +43,11 @@ void getRED_LED(){
   }
 }
 
-// setup API resources
 void setup_routing() {
-  
- 
+   
   server.on("/POT", getPOT);
   server.on("/RED_LED", getRED_LED);
  
-  // start server
   server.begin();
 }
 
@@ -64,12 +60,9 @@ void setup() {
   pinMode(RED_LED, OUTPUT);
   digitalWrite(RED_LED, LOW);
  
-  setup_routing(); 	 	 
-  	 	 
-   
+  setup_routing(); 	 	   	 	  
 }	 	 
   	 	 
 void loop() {	 	 
-  server.handleClient();	 
-   
+  server.handleClient();	  
 }
